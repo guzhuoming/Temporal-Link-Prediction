@@ -5,7 +5,7 @@ import numpy as np
 import time
 import datetime
 
-name = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\name_node_pairs_2_quchong_with12_without_notran.csv')
+name = open('./data/name_node_pairs_2_quchong_with12_without_notran.csv')
 df_name_node_pairs = pd.read_csv(name)
 name_node_pairs = df_name_node_pairs['name_node_pairs']
 no_tran_list = []
@@ -13,7 +13,7 @@ no_tran_list = []
 # 创建带有时间序号的空的temporal link feature 文件
 for i in range(len(name_node_pairs)):
 
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link features_5_7days_739\\'+name_node_pairs[i]+'_temp_link_ft.csv','w',newline='')
+    file = open('./data/temporal link features_5_7days_739/'+name_node_pairs[i]+'_temp_link_ft.csv','w',newline='')
     csvwriter = csv.writer(file)
     csvwriter.writerow(['tran_num', 'tran_sum', 'tran_mean', 'tran_var', 'interval_mean', 'interval_var', 'tran_freq', 'tran_num_dir'])#directional
     for j in range(5):
@@ -25,7 +25,7 @@ for i in range(len(name_node_pairs)):
     print('--------------------------------i = '+str(i)+'--------------------------------')
     # 打开每个节点对
     node_pair = name_node_pairs[i]
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\0_1_quchong_and_12\\'+node_pair+'.csv')
+    file = open('./data/0_1_quchong_and_12/'+node_pair+'.csv')
     df_node_pair = pd.read_csv(file, index_col=0)
     df_node_pair.index = range(len(df_node_pair))
 
@@ -39,7 +39,7 @@ for i in range(len(name_node_pairs)):
         npos = node_pair.index('_') # “_” 的位置
         x = node_pair[0:npos]
         y = node_pair[npos+1:]
-        file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link features_5_7days_739\\' + name_node_pairs[i] + '_temp_link_ft.csv')
+        file = open('./data/temporal link features_5_7days_739/' + name_node_pairs[i] + '_temp_link_ft.csv')
         df = pd.read_csv(file)
         file.close()
         if (df_node_pair['From'][j] == x and df_node_pair['To'][j] == y) or \
@@ -60,7 +60,7 @@ for i in range(len(name_node_pairs)):
             # print('tran_sum:' + str(df['tran_sum'][temp_t]))
             tran[temp_t].append(df_node_pair['Value'][j])
             timestamp[temp_t].append(df_node_pair['Value'][j])
-        df.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link features_5_7days_739\\' + name_node_pairs[i] + '_temp_link_ft.csv', index=False)
+        df.to_csv('./data/temporal link features_5_7days_739/' + name_node_pairs[i] + '_temp_link_ft.csv', index=False)
 
     if(flag==False):
         no_tran_list.append(i)
@@ -68,19 +68,19 @@ for i in range(len(name_node_pairs)):
         if len(tran[t])>0:
             df['tran_mean'][t] = np.mean(tran[t])
             df['tran_var'][t] = np.var(tran[t])
-            df.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link features_5_7days_739\\' + name_node_pairs[i] + '_temp_link_ft.csv', index=False)
+            df.to_csv('./data/temporal link features_5_7days_739/' + name_node_pairs[i] + '_temp_link_ft.csv', index=False)
         if len(timestamp[t]) > 1:
             temp = [] # 储存交易时间间隔
             for n in range(len(timestamp[t])-1):
                 temp = temp + [timestamp[t][n+1]-timestamp[t][n]]
                 df['interval_mean'][t] = np.mean(temp)
                 df['interval_var'][t] = np.var(temp)
-            df.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link features_5_7days_739\\' + name_node_pairs[i] + '_temp_link_ft.csv', index=False)
+            df.to_csv('./data/temporal link features_5_7days_739/' + name_node_pairs[i] + '_temp_link_ft.csv', index=False)
     #-----------------------交易频率-------------------
     #暂定是交易次数每周
     df['tran_freq'] = df['tran_num']
     #--------------------------------------------------
-    df.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link features_5_7days_739\\'+name_node_pairs[i]+'_temp_link_ft.csv', index=False)
+    df.to_csv('./data/temporal link features_5_7days_739/'+name_node_pairs[i]+'_temp_link_ft.csv', index=False)
     print('成功！')
 
 print('=======no tran list========')

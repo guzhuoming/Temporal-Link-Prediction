@@ -3,7 +3,7 @@ import csv
 import os
 import pandas as pd
 
-file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\name_node_pairs_selected_0x3f_5_7days.csv')
+file = open('./name_node_pairs_selected_0x3f_5_7days.csv')
 df = pd.read_csv(file)
 node_set = []
 
@@ -16,7 +16,7 @@ for i in range(len(df)):
 
 num = 0
 
-file_ = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\name_node_pairs_2.csv','w',newline='') #2----包括二阶节点
+file_ = open('./data/name_node_pairs_2.csv','w',newline='') #2----包括二阶节点
 csvwriter = csv.writer(file_)
 csvwriter.writerow(['','name_node_pairs'])
 

@@ -11,7 +11,7 @@ import math
 
 
 
-name = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\name_node_pairs_2_quchong_with12_without_notran.csv')
+name = open('./data/name_node_pairs_2_quchong_with12_without_notran.csv')
 df_name_node_pairs = pd.read_csv(name)
 name_node_pairs = df_name_node_pairs['name_node_pairs']
 
@@ -19,7 +19,7 @@ mse = 0
 
 for i in range(len(name_node_pairs)):
 
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_ARIMA\\'+name_node_pairs[i]+'.csv','w',newline='')
+    file = open('./data/temporal link prediction_ARIMA/'+name_node_pairs[i]+'.csv','w',newline='')
     csvwriter = csv.writer(file)
     csvwriter.writerow(['t', 'tran_sum_real', 'prediction_ARIMA', 'difference_ARIMA'])
     for j in range(2):
@@ -33,7 +33,7 @@ for i in range(len(name_node_pairs)):
     print(str(i / len(name_node_pairs) * 100) + '%')
     # print(name_node_pairs[i])
 
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link features_5_7days_739\\' + name_node_pairs[i] + '_temp_link_ft.csv')
+    file = open('./data/temporal link features_5_7days_739/' + name_node_pairs[i] + '_temp_link_ft.csv')
     df = pd.read_csv(file)
 
     new_data = pd.DataFrame(df, columns=['tran_sum'])
@@ -92,13 +92,13 @@ for i in range(len(name_node_pairs)):
     # print(rms)
     mse = mse+rms
 
-    file2 = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_ARIMA\\' + name_node_pairs[i] + '.csv')
+    file2 = open('./data/temporal link prediction_ARIMA/' + name_node_pairs[i] + '.csv')
     df_2 = pd.read_csv(file2)
     for j in range(2):
         df_2['prediction_ARIMA'][j] = tran_sum[j]
         df_2['tran_sum_real'][j] = df['tran_sum'][j+3]
         df_2['difference_ARIMA'][j] = df_2['prediction_ARIMA'][j]-df_2['tran_sum_real'][j]
-    df_2.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_ARIMA\\' + name_node_pairs[i] + '.csv', index=False)
+    df_2.to_csv('./data/temporal link prediction_ARIMA/' + name_node_pairs[i] + '.csv', index=False)
 
     # train = new_data[:3]
     # valid = new_data[3:]

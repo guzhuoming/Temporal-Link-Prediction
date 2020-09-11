@@ -9,7 +9,7 @@ import random
 # 以100天为时间间隔，储存，每个小括号里是1811个节点对
 s = [[]for i in range(1408)]
 
-name = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\name_node_pairs_2_quchong_with12.csv')
+name = open('./data/name_node_pairs_2_quchong_with12.csv')
 df_name_node_pairs = pd.read_csv(name)
 name_node_pairs = df_name_node_pairs['name_node_pairs']
 
@@ -24,9 +24,9 @@ name_node_pairs = df_name_node_pairs['name_node_pairs']
 for i in range(len(name_node_pairs)):
     print(i)
     print(name_node_pairs[i])
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\0_1_quchong_and_12\\'+name_node_pairs[i]+'.csv')
+    file = open('./data/0_1_quchong_and_12/'+name_node_pairs[i]+'.csv')
     df = pd.read_csv(file)
-    df.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\node_pairs_selected_7days\\'+name_node_pairs[i]+'.csv', index=False)
+    df.to_csv('./data/node_pairs_selected_7days/'+name_node_pairs[i]+'.csv', index=False)
 # 只保留这些节点在95-99时的值
 # 95*7*86400+1455206400 = 1512662400
 # 100*7*86400+1455206400 = 1515686400
@@ -35,7 +35,7 @@ num = 0 # 用来统计5个时间段都没有交易的节点对有多少
 no_tran_list = []
 for i in range(len(name_node_pairs)):
     print(i)
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\0_1_quchong_and_12\\' + name_node_pairs[i] + '.csv')
+    file = open('./data/0_1_quchong_and_12/' + name_node_pairs[i] + '.csv')
     df = pd.read_csv(file)
     df = df[(df['TimeStamp']>=1512662400)&(df['TimeStamp']<1515686400)]
     if(len(df) == 0):
@@ -43,7 +43,7 @@ for i in range(len(name_node_pairs)):
         print(num)
         no_tran_list.append(i)
     else:
-        df.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\node_pairs_selected_5_7days\\' + name_node_pairs[i] + '.csv', index=False)
+        df.to_csv('./data/node_pairs_selected_5_7days/' + name_node_pairs[i] + '.csv', index=False)
 
 print('------------num------------')
 print(num)

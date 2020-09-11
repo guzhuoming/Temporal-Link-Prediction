@@ -3,14 +3,14 @@ import csv
 import numpy as np
 import math
 
-name = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\name_node_pairs_2_quchong_with12_without_notran.csv')
+name = open('./data/name_node_pairs_2_quchong_with12_without_notran.csv')
 df_name_node_pairs = pd.read_csv(name)
 name_node_pairs = df_name_node_pairs['name_node_pairs']
 
 # 创建带有时间序号的空的temporal link prediction 文件
 for i in range(len(name_node_pairs)):
 
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_LA_HA\\'+name_node_pairs[i]+'.csv','w',newline='')
+    file = open('./data/temporal link prediction_LA_HA/'+name_node_pairs[i]+'.csv','w',newline='')
     csvwriter = csv.writer(file)
     csvwriter.writerow(['t', 'tran_sum_real', 'tran_sum_la', 'tran_sum_ha', 'difference_la', 'difference_ha'])
     for j in range(2):
@@ -23,12 +23,12 @@ print('进度：')
 for i in range(len(name_node_pairs)):
     print(str(i/len(name_node_pairs)*100)+'%')
     # 打开每个节点对的信息后面进行统计
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link features_5_7days_739\\' + name_node_pairs[i] + '_temp_link_ft.csv')
+    file = open('./data/temporal link features_5_7days_739/' + name_node_pairs[i] + '_temp_link_ft.csv')
     df_node_pair = pd.read_csv(file)
     file.close()
 
     # 创建预测文件
-    file2 = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_LA_HA\\' + name_node_pairs[i] + '.csv')
+    file2 = open('./data/temporal link prediction_LA_HA/' + name_node_pairs[i] + '.csv')
     df_prediction = pd.read_csv(file2)
     file2.close()
 
@@ -63,7 +63,7 @@ for i in range(len(name_node_pairs)):
         # print('mse_la')
         # print(mse_la)
 
-    df_prediction.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_LA_HA\\' + name_node_pairs[i] + '.csv', index=False)
+    df_prediction.to_csv('./data/temporal link prediction_LA_HA/' + name_node_pairs[i] + '.csv', index=False)
 
 mse_ha = math.sqrt(mse_ha/(len(name_node_pairs)*2))
 mse_la = math.sqrt(mse_la/(len(name_node_pairs)*2))

@@ -14,12 +14,12 @@ import networkx as nx
 
 #====================打开文件============================
 
-name = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\name_node_pairs_2_quchong_with12_without_notran.csv')
+name = open('./data/name_node_pairs_2_quchong_with12_without_notran.csv')
 df_name_node_pairs = pd.read_csv(name)
 name_node_pairs = df_name_node_pairs['name_node_pairs']
 
-Graph_all = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\GAT_preprocess\\Graph_all.npy')
-A_all = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\GAT_preprocess\\A_all.npy')
+Graph_all = np.load('./data/GAT_preprocess/Graph_all.npy', allow_pickle=True)
+A_all = np.load('./data/GAT_preprocess/A_all.npy', allow_pickle=True)
 
 print(Graph_all)
 print(A_all)

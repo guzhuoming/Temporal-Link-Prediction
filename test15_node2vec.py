@@ -17,7 +17,7 @@ scaler = MinMaxScaler(feature_range=(0, 1))
 
 # 读取节点对-------------------------------------------------------------------------------------------------------------
 
-name = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\name_node_pairs_2_quchong_with12_without_notran.csv')
+name = open('./data/name_node_pairs_2_quchong_with12_without_notran.csv')
 df_name_node_pairs = pd.read_csv(name)
 name_node_pairs = df_name_node_pairs['name_node_pairs']
 
@@ -62,7 +62,7 @@ def ReadTxtName(rootdir): #输入l为[]
 
 data = []
 for i in range(5):
-    l = ReadTxtName('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\node2vec\\temp_pred_output'+str(i)+'.txt')
+    l = ReadTxtName('./data/node2vec/temp_pred_output'+str(i)+'.txt')
     # print(len(l))
     # print(l[0])
     data.append(np.array(l))
@@ -97,7 +97,7 @@ model.compile(loss='mse', optimizer='rmsprop')
 
 dataset_total = []
 for i in range(len(name_node_pairs)):
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link features_5_7days_739\\' +
+    file = open('./data/temporal link features_5_7days_739/' +
                 name_node_pairs[i] + '_temp_link_ft.csv')
     df = pd.read_csv(file)
     new_data = pd.DataFrame(df, columns=['tran_sum'])
@@ -167,7 +167,7 @@ value = scaler.inverse_transform(value)
 value[value<0]=0
 print(value)
 data_pred = pd.DataFrame({'pred_1': value[0], 'pred_2': value[1], 'transum_1': transum[0].tolist(), 'transum_2': transum[1].tolist()})
-data_pred.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_node2vec\\prediciton_node2vec.csv', index=False)
+data_pred.to_csv('./data/temporal link prediction_node2vec/prediciton_node2vec.csv', index=False)
 
 #-------------------
 rmse = 0
