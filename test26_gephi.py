@@ -5,19 +5,19 @@ import numpy as np
 import csv
 import math
 
-name = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\name_node_pairs_2_quchong_with12_without_notran.csv')
+name = open('./data/name_node_pairs_2_quchong_with12_without_notran.csv')
 df_name_node_pairs = pd.read_csv(name)
 name_node_pairs = df_name_node_pairs['name_node_pairs']
 
 for t in range(5):
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\Gephi\\'+str(t)+'.csv','w',newline='')
+    file = open('./data/Gephi/'+str(t)+'.csv','w',newline='')
     csvwriter = csv.writer(file)
     #需要将from 和 to改成source和target
     csvwriter.writerow(['Source', 'Target', 'Value'])
 
 for i in range(len(name_node_pairs)):
     node_pair = name_node_pairs[i]
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\0_1_quchong_and_12\\'+node_pair+'.csv')
+    file = open('./data/0_1_quchong_and_12/'+node_pair+'.csv')
     df_node_pair = pd.read_csv(file)
     print(i)
     for j in range(len(df_node_pair)):
@@ -26,13 +26,13 @@ for i in range(len(name_node_pairs)):
             Source = df_node_pair['From'][j]
             Target = df_node_pair['To'][j]
             Value = df_node_pair['Value'][j]
-            file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\Gephi\\' + str(t) + '.csv', 'a+', newline='')
+            file = open('./data/Gephi/' + str(t) + '.csv', 'a+', newline='')
             csvwriter = csv.writer(file)
             csvwriter.writerow([Source, Target, Value])
 
 for t in range(95, 100):
     print('t='+str(t))
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\Gephi\\'+str(t)+'.csv')
+    file = open('./data/Gephi/'+str(t)+'.csv')
     df = pd.read_csv(file)
     df['duplicate'] = len(df)*[0]#判断重复的是否已经累加
     if len(df)>1:
@@ -46,4 +46,4 @@ for t in range(95, 100):
 
     df = df[df['duplicate']==0]
     df.drop(['duplicate'], axis=1, inplace=True)
-    df.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\Gephi\\'+str(t)+'_合并后.csv',index=False)
+    df.to_csv('./data/Gephi/'+str(t)+'_合并后.csv',index=False)

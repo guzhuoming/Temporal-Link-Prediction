@@ -2,13 +2,13 @@ import pandas as pd
 import numpy as np
 # 统计出现大额异动的范围和是否出现大额移动
 
-name = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\name_node_pairs_2_quchong_with12_without_notran.csv')
+name = open('./data/name_node_pairs_2_quchong_with12_without_notran.csv')
 df_name_node_pairs = pd.read_csv(name)
 name_node_pairs = df_name_node_pairs['name_node_pairs']
 
 num = 0
 for i in range(len(name_node_pairs)):
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link features_5_7days_739\\' +
+    file = open('./data/temporal link features_5_7days_739/' +
                 name_node_pairs[i] + '_temp_link_ft.csv')
     df = pd.read_csv(file)
 
@@ -32,12 +32,12 @@ for i in range(len(name_node_pairs)):
 
     data = [[min_, max_, big_change1, big_change2]]
     df2 = pd.DataFrame(data, columns=['min', 'max', 'big_change1', 'big_change2'])
-    df2.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\大额异动\\' +
+    df2.to_csv('./data/大额异动/' +
                 name_node_pairs[i] + '.csv')
 
 big_changes = 0
 for i in range(len(name_node_pairs)):
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\大额异动\\' +
+    file = open('./data/大额异动/' +
                 name_node_pairs[i] + '.csv')
     df = pd.read_csv(file)
     if df['big_change2'][0] == True or df['big_change1'][0] == True:

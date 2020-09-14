@@ -31,12 +31,12 @@ from utils import load_data, preprocess_features
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler(feature_range=(0, 1))
 
-name = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\name_node_pairs_2_quchong_with12_without_notran.csv')
+name = open('./data/name_node_pairs_2_quchong_with12_without_notran.csv')
 df_name_node_pairs = pd.read_csv(name)
 name_node_pairs = df_name_node_pairs['name_node_pairs']
 
 #====================================建图================================
-Graph_all = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\GAT_preprocess\\Graph_all.npy')
+Graph_all = np.load('./data/GAT_preprocess/Graph_all.npy')
 temp = np.zeros((739, 739))
 A_all = [temp for i in range(5)]
 for i in range(5):
@@ -69,9 +69,9 @@ for i in range(5):
 
 
 # Read data
-# X = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\GAT_preprocess\\'+str(0)+'\\all.npy')
+# X = np.load('E:/exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90/GAT_preprocess/'+str(0)+'/all.npy')
 # print(X)
-# X_out = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\GAT_preprocess\\'+str(3)+'\\all.npy')
+# X_out = np.load('E:/exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90/GAT_preprocess/'+str(3)+'/all.npy')
 # X = scipy.sparse.csr_matrix(X)
 # X = X.tolil()
 # X_out = scipy.sparse.csr_matrix(X_out)
@@ -80,7 +80,7 @@ for i in range(5):
 data = []
 for i in range(5):
     print(i)
-    temp = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\GAT_preprocess\\'+str(i)+'\\all.npy')
+    temp = np.load('./data/GAT_preprocess/'+str(i)+'/all.npy')
     print(temp)
     temp = scipy.sparse.csr_matrix(temp)
     # print(temp)
@@ -99,41 +99,41 @@ for i in range(5):
 # data_train = np.array(data_train)
 
 
-# X1 = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\GAT_preprocess\\'+str(0)+'\\all.npy')
+# X1 = np.load('E:/exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90/GAT_preprocess/'+str(0)+'/all.npy')
 # print(X1)
-# # X1_out = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\GAT_preprocess\\'+str(3)+'\\all.npy')
+# # X1_out = np.load('E:/exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90/GAT_preprocess/'+str(3)+'/all.npy')
 # X1 = scipy.sparse.csr_matrix(X1)
 # # X1 = X1.tolil()
 # # X1_out = scipy.sparse.csr_matrix(X1_out)
 # # X1_out = X1_out.tolil()
 #
-# X2 = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\GAT_preprocess\\'+str(1)+'\\all.npy')
+# X2 = np.load('E:/exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90/GAT_preprocess/'+str(1)+'/all.npy')
 # print(X2)
-# # X2_out = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\GAT_preprocess\\'+str(3)+'\\all.npy')
+# # X2_out = np.load('E:/exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90/GAT_preprocess/'+str(3)+'/all.npy')
 # X2 = scipy.sparse.csr_matrix(X2)
 # # X2 = X2.tolil()
 # # X2_out = scipy.sparse.csr_matrix(X2_out)
 # # X2_out = X2_out.tolil()
 #
-# X3 = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\GAT_preprocess\\'+str(2)+'\\all.npy')
+# X3 = np.load('E:/exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90/GAT_preprocess/'+str(2)+'/all.npy')
 # print(X3)
-# # X3_out = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\GAT_preprocess\\'+str(3)+'\\all.npy')
+# # X3_out = np.load('E:/exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90/GAT_preprocess/'+str(3)+'/all.npy')
 # X3 = scipy.sparse.csr_matrix(X3)
 # # X3 = X3.tolil()
 # # X3_out = scipy.sparse.csr_matrix(X3_out)
 # # X3_out = X3_out.tolil()
 #
-# X4 = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\GAT_preprocess\\'+str(3)+'\\all.npy')
+# X4 = np.load('E:/exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90/GAT_preprocess/'+str(3)+'/all.npy')
 # print(X4)
-# # X4_out = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\GAT_preprocess\\'+str(3)+'\\all.npy')
+# # X4_out = np.load('E:/exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90/GAT_preprocess/'+str(3)+'/all.npy')
 # X4 = scipy.sparse.csr_matrix(X4)
 # # X4 = X4.tolil()
 # # X4_out = scipy.sparse.csr_matrix(X4_out)
 # # X4_out = X4_out.tolil()
 #
-# X5 = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\GAT_preprocess\\'+str(4)+'\\all.npy')
+# X5 = np.load('E:/exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90/GAT_preprocess/'+str(4)+'/all.npy')
 # print(X5)
-# # X5_out = np.load('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90\\GAT_preprocess\\'+str(3)+'\\all.npy')
+# # X5_out = np.load('E:/exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_90/GAT_preprocess/'+str(3)+'/all.npy')
 # X5 = scipy.sparse.csr_matrix(X5)
 # # X5 = X5.tolil()
 # # X5_out = scipy.sparse.csr_matrix(X5_out)
@@ -209,7 +209,7 @@ for i in range(2,4):
 
 dataset_total = []
 for i in range(len(name_node_pairs)):
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link features_5_7days_739\\' +
+    file = open('./data/temporal link features_5_7days_739/' +
                 name_node_pairs[i] + '_temp_link_ft.csv')
     df = pd.read_csv(file)
     new_data = pd.DataFrame(df, columns=['tran_sum'])
@@ -335,11 +335,11 @@ data_pred = pd.DataFrame({'pred_1': value[0], 'pred_2': value[1], 'transum_1': t
 
 # -----------------------GAT_LSTM----------------------------------------------------------------
 
-data_pred.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_GAT\\prediciton_GAT.csv', index=False)
+data_pred.to_csv('./data/temporal link prediction_GAT/prediciton_GAT.csv', index=False)
 
 # -------------------------GAT_LSTM_GAT-------------------------------------------------------
 
-# data_pred.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_GAT_LSTM_GAT\\prediciton_GAT_LSTM_GAT.csv', index=False)
+# data_pred.to_csv('./data/temporal link prediction_GAT_LSTM_GAT/prediciton_GAT_LSTM_GAT.csv', index=False)
 
 # ---------------------------------------------------------------------------------------------
 rmse = 0

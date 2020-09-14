@@ -9,7 +9,7 @@ strs = ['0x30b10221c90134db4bb8388748428bc0778594d8_0x8b1698f7344d8446821940dfa1
         '0x43b687b0a11718730c562ee32a103d93bfe458bc_0xd37cff84883f8b92e778b7dac0ca354e28741e09']
 
 for i in range(len(strs)):
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\0_1\\' + strs[i] + '.csv')
+    file = open('./data/0_1/' + strs[i] + '.csv')
     df = pd.read_csv(file)
     pos = strs[i].find('_')
     x = strs[i][0:pos]
@@ -35,4 +35,4 @@ for i in range(len(strs)):
 
     df['time'] = time_
 
-    df.to_csv('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\3_biggest\\' + strs[i] + '.csv', index=False)
+    df.to_csv('./data/3_biggest/' + strs[i] + '.csv', index=False)

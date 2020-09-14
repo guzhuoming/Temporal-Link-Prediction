@@ -3,7 +3,7 @@
 import pandas as pd
 import numpy as np
 
-name = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\name_node_pairs_2_quchong_with12_without_notran.csv')
+name = open('./data/name_node_pairs_2_quchong_with12_without_notran.csv')
 df_name_node_pairs = pd.read_csv(name)
 name_node_pairs = df_name_node_pairs['name_node_pairs']
 
@@ -39,31 +39,31 @@ acc_node2vec_lstm_att = 0
 acc_gcn_lstm_att = 0
 acc_gat_lstm_att = 0
 
-file_node2vec_lstm = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_node2vec_LSTM\\prediciton_node2vec_LSTM.csv')
+file_node2vec_lstm = open('./data/temporal link prediction_node2vec_LSTM/prediciton_node2vec_LSTM.csv')
 df_node2vec_lstm = pd.read_csv(file_node2vec_lstm)
-file_node2vec = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_node2vec\\prediciton_node2vec.csv')
+file_node2vec = open('./data/temporal link prediction_node2vec/prediciton_node2vec.csv')
 df_node2vec = pd.read_csv(file_node2vec)
-file_gcn = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_GCN\\prediciton_GCN.csv')
+file_gcn = open('./data/temporal link prediction_GCN/prediciton_GCN.csv')
 df_gcn = pd.read_csv(file_gcn)
-file_gat = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_GAT\\prediciton_GAT.csv')
+file_gat = open('./data/temporal link prediction_GAT/prediciton_GAT.csv')
 df_gat = pd.read_csv(file_gat)
-file_gcn_lstm = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_GCN_LSTM\\prediciton_GCN_LSTM.csv')
+file_gcn_lstm = open('./data/temporal link prediction_GCN_LSTM/prediciton_GCN_LSTM.csv')
 df_gcn_lstm = pd.read_csv(file_gcn_lstm)
-file_gat_lstm = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_GAT_LSTM\\prediciton_GAT_LSTM.csv')
+file_gat_lstm = open('./data/temporal link prediction_GAT_LSTM/prediciton_GAT_LSTM.csv')
 df_gat_lstm = pd.read_csv(file_gat_lstm)
-file_gat_lstm_gat = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_GAT_LSTM_GAT\\prediciton_GAT_LSTM_GAT.csv')
+file_gat_lstm_gat = open('./data/temporal link prediction_GAT_LSTM_GAT/prediciton_GAT_LSTM_GAT.csv')
 df_gat_lstm_gat = pd.read_csv(file_gat_lstm_gat)
 
-file_node2vec_lstm_att = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_node2vec_LSTM_att\\prediciton_node2vec_LSTM_att.csv')
+file_node2vec_lstm_att = open('./data/temporal link prediction_node2vec_LSTM_att/prediciton_node2vec_LSTM_att.csv')
 df_node2vec_lstm_att = pd.read_csv(file_node2vec_lstm_att)
-file_gcn_lstm_att = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_GCN_LSTM_att\\prediciton_GCN_LSTM_att.csv')
+file_gcn_lstm_att = open('./data/temporal link prediction_GCN_LSTM_att/prediciton_GCN_LSTM_att.csv')
 df_gcn_lstm_att = pd.read_csv(file_gcn_lstm_att)
-file_gat_lstm_att = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_GAT_LSTM_att\\prediciton_GAT_LSTM_att.csv')
+file_gat_lstm_att = open('./data/temporal link prediction_GAT_LSTM_att/prediciton_GAT_LSTM_att.csv')
 df_gat_lstm_att = pd.read_csv(file_gat_lstm_att)
 
 for i in range(len(name_node_pairs)):
 
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\大额异动\\' +
+    file = open('./data/大额异动/' +
                 name_node_pairs[i] + '.csv')
     df_bigchange = pd.read_csv(file)
     min_ = df_bigchange['min'][0]
@@ -72,14 +72,14 @@ for i in range(len(name_node_pairs)):
     big_change.append(df_bigchange['big_change1'][0])
     big_change.append(df_bigchange['big_change2'][0])
 
-    file1 = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_LA_HA\\' +
+    file1 = open('./data/temporal link prediction_LA_HA/' +
                 name_node_pairs[i] + '.csv')
     df_laha = pd.read_csv(file1)
 
-    file2 = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_ARIMA\\' +
+    file2 = open('./data/temporal link prediction_ARIMA/' +
                 name_node_pairs[i] + '.csv')
     df_arima = pd.read_csv(file2)
-    file3 = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\temporal link prediction_LSTM_withoutNegative\\' +
+    file3 = open('./data/temporal link prediction_LSTM_withoutNegative/' +
                 name_node_pairs[i] + '.csv')
     df_lstm = pd.read_csv(file3)
 

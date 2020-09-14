@@ -8,14 +8,14 @@ import random
 # 以100天为时间间隔，储存，每个小括号里是1811个节点对
 s = [[]for i in range(1408)]
 
-name = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\name_node_pairs_2_quchong_with12.csv')
+name = open('./data/name_node_pairs_2_quchong_with12.csv')
 df_name_node_pairs = pd.read_csv(name)
 name_node_pairs = df_name_node_pairs['name_node_pairs']
 
 # 创建带有时间序号的空的temporal link prediction 文件
 for i in range(len(name_node_pairs)):
     print(i)
-    file = open('E:\\exchange_0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be_12\\0_1_quchong_and_12\\'+name_node_pairs[i]+'.csv')
+    file = open('./data/0_1_quchong_and_12/'+name_node_pairs[i]+'.csv')
     df_node_pair = pd.read_csv(file)
     print(name_node_pairs[i])
     node_pair = name_node_pairs[i]
