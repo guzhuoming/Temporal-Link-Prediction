@@ -41,6 +41,7 @@ name_node_pairs = df_name_node_pairs['name_node_pairs']
 
 #====================================建图================================
 Graph_all = np.load('./data/GAT_preprocess/Graph_all.npy', allow_pickle=True)
+
 temp = np.zeros((739, 739))
 A_all = [temp for i in range(5)]
 for i in range(5):
