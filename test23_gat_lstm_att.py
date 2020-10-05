@@ -1,4 +1,5 @@
 # 5个挑选的节点对
+# testing
 from __future__ import division
 import pandas as pd
 import csv
@@ -233,7 +234,7 @@ for i in range(2): # 2 train samples
     temp = [a[1+i] for a in dataset_total]
     y_train.append(temp)
 y_train = np.array(y_train)
-# y_train = scaler.fit_transform(y_train)
+y_train = scaler.fit_transform(y_train)
 print(y_train.shape) #(2, 12)
 #===================真实交易额====================================
 
@@ -335,7 +336,7 @@ for i in range(2):
 
 value = np.array(value).reshape(2,739)
 print(np.array(value).reshape(2,739))
-value = scaler.inverse_transform(value)
+# value = scaler.inverse_transform(value)
 # 出现负值置零
 value[value<0]=0
 print(value)
