@@ -7,8 +7,7 @@ import csv
 import numpy as np
 import math
 
-import seq2seq
-from seq2seq.models import SimpleSeq2Seq
+
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, LSTM, RepeatVector, Reshape, Bidirectional, Input
 from keras.models import Model
@@ -164,6 +163,7 @@ for i in range(len(value)):
     value[i] = np.reshape(value[i], (739))
 # value = scaler.inverse_transform(value)
 # 出现负值置零
+value = np.array(value)
 value[value<0]=0
 print(value)
 data_pred = pd.DataFrame({'pred_1': value[0], 'pred_2': value[1], 'transum_1': transum[0].tolist(), 'transum_2': transum[1].tolist()})

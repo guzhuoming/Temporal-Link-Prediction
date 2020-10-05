@@ -5,10 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import csv
 import numpy as np
-import math
 
-import seq2seq
-from seq2seq.models import SimpleSeq2Seq
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, LSTM, RepeatVector, Reshape, Bidirectional
 

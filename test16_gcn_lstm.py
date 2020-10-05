@@ -35,7 +35,7 @@ MAX_DEGREE = 2  # maximum polynomial degree
 SYM_NORM = True  # symmetric (True) vs. left-only (False) normalization
 
 # ====================================建图================================
-Graph_all = np.load('./data/GAT_preprocess/Graph_all.npy')
+Graph_all = np.load('./data/GAT_preprocess/Graph_all.npy', allow_pickle=True)
 temp = np.zeros((739, 739))
 A_all = [temp for i in range(5)]
 for i in range(5):
