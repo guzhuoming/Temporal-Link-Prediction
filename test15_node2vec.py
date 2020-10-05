@@ -162,7 +162,7 @@ for i in range(len(data_train)):
 print('-----value')
 for i in range(len(value)):
     value[i] = np.reshape(value[i], (739))
-value = scaler.inverse_transform(value)
+# value = scaler.inverse_transform(value)
 # 出现负值置零
 value[value<0]=0
 print(value)

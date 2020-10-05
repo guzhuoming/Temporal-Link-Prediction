@@ -149,7 +149,7 @@ model.fit(data_train, y_train)
 value = model.predict(data_test)
 print('-----value')
 print(value)
-value = scaler.inverse_transform(value)
+# value = scaler.inverse_transform(value)
 # 出现负值置零
 value[value<0]=0
 # print(np.array(value).shape)

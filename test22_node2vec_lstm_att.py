@@ -160,7 +160,7 @@ for i in range(2):
     value.append(model.predict(data_test[i], batch_size=739))
 print('-----value')
 value = np.array(value).reshape(2,739)
-value = scaler.inverse_transform(value)
+# value = scaler.inverse_transform(value)
 # 出现负值置零
 value[value<0]=0
 # print(np.array(value).shape)

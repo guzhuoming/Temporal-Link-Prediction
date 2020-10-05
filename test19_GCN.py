@@ -215,7 +215,7 @@ for i in range(2):
 
 value = np.array(value).reshape(2,739)
 print(np.array(value).reshape(2,739))
-value = scaler.inverse_transform(value)
+# value = scaler.inverse_transform(value)
 # 出现负值置零
 value[value<0]=0
 print(value)
